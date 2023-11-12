@@ -1,0 +1,101 @@
+.App {
+  text-align: center;
+}
+
+.notes {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-container {
+  display: flex;
+  position: relative;
+  height: 50px;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 25px;
+}
+
+.refresh {
+  position: relative;
+  display: inline-block;
+  padding: 15px 15px;
+  border-radius: 15px;
+  margin-left: 15px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.refresh-text {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.refresh:focus {
+  outline: none;
+}
+
+.notes-list-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.notes-item-container {
+  display: flex;
+  position: relative;
+  width: 150px;
+  border: 1px solid black;
+  margin: 15px;
+}
+
+.delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: red;
+  cursor: pointer;
+}
+
+.note-text {
+  margin-top: 25px;
+}
+
+.input {
+  height: 70px;
+  width: 250px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  width: 250px;
+}
+
+.input-btn {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  bottom: 5px;
+  right: 15px;
+  cursor: pointer;
+  padding: 1px 3px;
+  border-radius: 15px;
+  text-align: center;
+
+}
+
+.input-btn:focus {
+  outline: none;
+}
