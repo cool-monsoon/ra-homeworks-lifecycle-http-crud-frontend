@@ -16,7 +16,7 @@ export default function NotesInput(props) {
 
   const handleSubmit = (event) => {
       event.preventDefault();
-      onAdd(form.text);
+      onAdd({text: form.text});
       setForm({text: ''});
   }
 
