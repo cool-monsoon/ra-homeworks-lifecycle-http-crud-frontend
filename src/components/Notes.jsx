@@ -16,7 +16,7 @@ export default class Notes extends Component {
 
   loadFromServer = () => {
     fetch(import.meta.env.VITE_API_URL)
-         .then(response => response.json)
+         .then(response => response.json())
          .then(notes => this.setState({ notes }))
          .catch(error => {
              console.error("Ошибка при загрузке данных с сервера:", error);
@@ -44,7 +44,7 @@ export default class Notes extends Component {
     return (
       <div className="notes">
         <GetButton onGet={this.loadFromServer} />
-        <NotesList notes={this.state.notes} onDelete={this.deleteFromServer} />
+        <NotesList notesArray={this.state.notes} onDelete={this.deleteFromServer} />
         <NotesInput onAdd={this.addToServer} />
       </div>
     );
