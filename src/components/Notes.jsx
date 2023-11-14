@@ -16,27 +16,14 @@ export default class Notes extends Component {
 
   loadFromServer = () => {
     fetch(import.meta.env.VITE_API_URL)
-         .then(response => {
-             if (response.headers.get("Content-Type") === "application/json") {
-                 return response.text();
-             } else {
-                 throw new Error("Ожидался JSON-объект, но получен некорректный ответ");
-             }
-         })
-         .then(notes => this.setState({ notes: jsonStr2Obj(notes) }))
+         .then(response => response.json)
+         .then(notes => this.setState({ notes }))
          .catch(error => {
              console.error("Ошибка при загрузке данных с сервера:", error);
          });
    };
 
- jsonStr2Obj = (jsonStr) => {
-  try {
-     return JSON.parse(jsonStr);
-  } catch (error) {
-     console.error("Ошибка при преобразовании строки в JSON-объект:", error);
-     return null;
-  }
- }
+ 
 
   deleteFromServer = (id) => {
     fetch(`${import.meta.env.VITE_API_URL}/${id}`, { method: 'DELETE' })
@@ -44,7 +31,7 @@ export default class Notes extends Component {
   }
 
   addToServer = (text) => {
-    fetch('http://localhost:7070/', {
+    fetch(import.meta.env.VITE_API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,7 +44,7 @@ export default class Notes extends Component {
     return (
       <div className="notes">
         <GetButton onGet={this.loadFromServer} />
-        <NotesList item={this.state.notes} onDelete={this.deleteFromServer} />
+        <NotesList notes={this.state.notes} onDelete={this.deleteFromServer} />
         <NotesInput onAdd={this.addToServer} />
       </div>
     );
